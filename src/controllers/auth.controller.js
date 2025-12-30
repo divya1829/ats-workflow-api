@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { User } from "../../models/index.js";
+import { User } from "../models/index.js";
 
 export const register = async (req, res) => {
   try {
@@ -22,7 +22,11 @@ export const register = async (req, res) => {
 
     res.status(201).json({
       message: "User registered successfully",
-      user: { id: user.id, email: user.email, role: user.role },
+      user: {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+      },
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
